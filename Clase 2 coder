@@ -1,0 +1,263 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOyDLttWVMbLxNN+rs7yLc6",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Rochyala85/Data-Science-Flex/blob/main/Clase%202%20coder\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Sz5nZrzTgJ6Q",
+        "outputId": "b215c197-8794-4088-ec91-2cb4caa8b76d"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "1\n",
+            "(10,)\n",
+            "10\n",
+            "float64\n",
+            "8\n",
+            "80\n"
+          ]
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "# Crear un ndarray de ceros con 10 elementos\n",
+        "arr = np.zeros(10)\n",
+        "\n",
+        "print(arr.ndim)       # Output: 1 (una dimensión)\n",
+        "print(arr.shape)      # Output: (10,) (10 elementos en una sola dimensión)\n",
+        "print(arr.size)       # Output: 10 (10 elementos en total)\n",
+        "print(arr.dtype)      # Output: float64 (tipo de dato de los elementos)\n",
+        "print(arr.itemsize)   # Output: 8 (cada elemento ocupa 8 bytes)\n",
+        "print(arr.nbytes)     # Output: 80 (10 elementos * 8 bytes por elemento)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "# Crear una Serie\n",
+        "data = pd.Series([10, 20, 30, 40], index=['a', 'b', 'c', 'd'])\n",
+        "\n",
+        "print(data)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "j_tBpeDpoe52",
+        "outputId": "6bb2c7f1-753e-4a4c-d458-13364c12289c"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "a    10\n",
+            "b    20\n",
+            "c    30\n",
+            "d    40\n",
+            "dtype: int64\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "# Crear un DataFrame\n",
+        "data = {\n",
+        "    'Nombre': ['Ana', 'Luis', 'María', 'Pedro'],\n",
+        "    'Edad': [28, 34, 29, 40],\n",
+        "    'Ciudad': ['Madrid', 'Barcelona', 'Valencia', 'Sevilla']\n",
+        "}\n",
+        "\n",
+        "df = pd.DataFrame(data)\n",
+        "\n",
+        "print(df)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "dRSlYXQbpB0h",
+        "outputId": "859ed464-813b-4740-9069-30f2adcb0cab"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "  Nombre  Edad     Ciudad\n",
+            "0    Ana    28     Madrid\n",
+            "1   Luis    34  Barcelona\n",
+            "2  María    29   Valencia\n",
+            "3  Pedro    40    Sevilla\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "\n",
+        "# Crear un DataFrame con valores ausentes\n",
+        "data = {'A': [1, 2, np.nan, 4],\n",
+        "        'B': [np.nan, 2, 3, 4],\n",
+        "        'C': [1, 2, 3, np.nan]}\n",
+        "\n",
+        "df = pd.DataFrame(data)\n",
+        "\n",
+        "# Detectar valores ausentes\n",
+        "print(df.isnull())"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "3WfgIrFVqmhG",
+        "outputId": "f08aedc9-9256-4796-cbef-731e656f5a60"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "       A      B      C\n",
+            "0  False   True  False\n",
+            "1  False  False  False\n",
+            "2   True  False  False\n",
+            "3  False  False   True\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Eliminar filas con valores ausentes\n",
+        "df_dropna = df.dropna()\n",
+        "\n",
+        "print(df_dropna)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "xOjIsUJeq2Ga",
+        "outputId": "69b2392f-12e7-4fbc-9272-63f937f1bccd"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "     A    B    C\n",
+            "1  2.0  2.0  2.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Rellenar valores ausentes con un valor constante\n",
+        "df_fillna = df.fillna(0)\n",
+        "\n",
+        "print(df_fillna)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "wQ-KZb2kq-3R",
+        "outputId": "35905ee0-e273-4a6e-e3e6-f0a89c18e219"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "     A    B    C\n",
+            "0  1.0  0.0  1.0\n",
+            "1  2.0  2.0  2.0\n",
+            "2  0.0  3.0  3.0\n",
+            "3  4.0  4.0  0.0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "  # Rellenar valores ausentes con la media de la columna\n",
+        "df_fillna_mean = df.fillna(df.mean())\n",
+        "\n",
+        "print(df_fillna_mean)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "p8wtAe0ZrFfZ",
+        "outputId": "05c34155-a431-4328-e96b-f94a8d0b0a00"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "          A    B    C\n",
+            "0  1.000000  3.0  1.0\n",
+            "1  2.000000  2.0  2.0\n",
+            "2  2.333333  3.0  3.0\n",
+            "3  4.000000  4.0  2.0\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
