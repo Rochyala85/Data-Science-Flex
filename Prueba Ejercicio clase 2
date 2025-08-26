@@ -1,0 +1,65 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyO51RIy3lq2+n1Jrr5w93WZ",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Rochyala85/Data-Science-Flex/blob/main/Prueba%20Ejercicio%20clase%202\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "OoYCK06M5lgD",
+        "outputId": "afd9dfaa-1850-4e9b-955d-a0af171ad1b8"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Hubo un retroceso el día Jueves (valor: 221 vs día anterior: 232)\n",
+            "Hubo un retroceso el día Domingo (valor: 255 vs día anterior: 256)\n"
+          ]
+        }
+      ],
+      "source": [
+        "import numpy as np\n",
+        "\n",
+        "valores = [200, 225, 232, 221, 243, 256, 255]\n",
+        "dias = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']\n",
+        "\n",
+        "# Calcular la diferencia entre valores consecutivos\n",
+        "diferencias = np.diff(valores)\n",
+        "\n",
+        "# Detectar retrocesos en los valores\n",
+        "for i, cambio in enumerate(diferencias, start=1):\n",
+        "    if cambio < 0:\n",
+        "        print(f\"Hubo un retroceso el día {dias[i]} (valor: {valores[i]} vs día anterior: {valores[i-1]})\")"
+      ]
+    }
+  ]
+}
